@@ -1,0 +1,1 @@
+Jardle is just like Wordle but in Japanese. 
