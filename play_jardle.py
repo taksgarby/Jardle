@@ -9,7 +9,7 @@ def main():
     jardle = Jardle("えんぴつ")
     
     while jardle.can_attempt: 
-        x = input("Your guess: ")
+        x = input("\nType Your guess: ")
 
         if len(x) != jardle.WORD_LENGTH:
             print(Fore.RED 
@@ -28,11 +28,20 @@ def main():
         print("Sorry, you did not solve the puzzle.")
 
 def display_results(jardle: Jardle):
+    print("\nYour results so far..\n")
+    print(f"You have {jardle.remaining_attempts} attempts remaining.")
+
+    lines = []
+
     for word in jardle.attempts:    
         result = jardle.guess(word)
         colored_result_str = convert_result_to_color(result)
-        print(colored_result_str)
-    pass
+        lines.append(colored_result_str)
+
+    for _ in range(jardle.remaining_attempts):
+        lines.append(" ".join(["_"] * jardle.WORD_LENGTH))
+    
+    draw_border_around(lines)
 
 def convert_result_to_color(result: List[LetterState]):
     result_with_color =[]
@@ -46,6 +55,19 @@ def convert_result_to_color(result: List[LetterState]):
         colored_letter = color + letter.character + Fore.RESET
         result_with_color.append(colored_letter)
     return "".join(result_with_color)
+
+def draw_border_around(lines: List[str], size: int=9, pad: int=1):
+    
+    content_length= size + pad * 2 
+    top_border = "┌" + "─" * content_length + "┐"
+    bottom_border = "└" + "─" * content_length + "┘"
+    space = " " * pad
+    print(top_border)
+
+    for line in lines:
+        print("│" + space + line + space + " │ ")
+    
+    print(bottom_border)
 
 if __name__ == "__main__":
     main()
