@@ -4,12 +4,16 @@ def main():
     print("Hello Jardle!")
     jardle = Jardle("えんぴつ")
     
-    while True: 
+    while jardle.can_attempt: 
         x = input("Your guess: ")
-        if x == jardle.secret:
-            print("Well done!")
-            break
-        print("Not quite.")
+        jardle.attempt(x)
+        result = jardle.guess(x)
+        print(result)
+    
+    if jardle.is_solved:
+        print("You've solved the puzzle.")
+    else:
+        print("Sorry, you did not solve the puzzle.")
 
 if __name__ == "__main__":
     main()
