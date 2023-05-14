@@ -10,9 +10,11 @@ class Jardle:
         
 
     def attempt(self, word: str):
+        # word = word.upper()
         self.attempts.append(word)
 
     def guess(self, word: str):
+        # word = word.upper()
         result = []
 
         for i in range(self.WORD_LENGTH):
