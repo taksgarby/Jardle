@@ -6,7 +6,10 @@ import random
 
 def main():
     print("Hello Jardle!")
-    jardle = Jardle("えんぴつ")
+
+    word_set = load_word_set("data/word_source.txt")
+    secret = random.choice(list(word_set))
+    jardle = Jardle(secret)
     
     while jardle.can_attempt: 
         x = input("\nType Your guess: ")
@@ -26,6 +29,7 @@ def main():
         print("You've solved the puzzle.")
     else:
         print("Sorry, you did not solve the puzzle.")
+        print(f"The secret word was: {jardle.secret}")
 
 def display_results(jardle: Jardle):
     print("\nYour results so far..\n")
@@ -42,6 +46,14 @@ def display_results(jardle: Jardle):
         lines.append(" ".join(["_"] * jardle.WORD_LENGTH))
     
     draw_border_around(lines)
+
+def load_word_set(path: str):
+    word_set = set()
+    with open(path, "r") as f:
+        for line in f.readlines():
+            word = line.strip().upper()
+            word_set.add(word)    
+    return word_set
 
 def convert_result_to_color(result: List[LetterState]):
     result_with_color =[]
