@@ -5,7 +5,7 @@ from colorama import Fore
 import random
 
 def main():
-    print("Hello Jardle!")
+    print("\n\nHello Jardle friend! \nWhat is the 4 letter Japanese word I am thinking of?")
 
     word_set = load_word_set("data/word_source.txt")
     secret = random.choice(list(word_set))
@@ -26,7 +26,7 @@ def main():
     # the asterisk splits the texts
 
     if jardle.is_solved:
-        print("You've solved the puzzle.")
+        print("Well done!You've solved the puzzle.")
     else:
         print("Sorry, you did not solve the puzzle.")
         print(f"The secret word was: {jardle.secret}")
@@ -77,7 +77,7 @@ def draw_border_around(lines: List[str], size: int=9, pad: int=1):
     print(top_border)
 
     for line in lines:
-        print("│" + space + line + space + " │ ")
+        print("│" + space + line + space  +" │ ")
     
     print(bottom_border)
 
