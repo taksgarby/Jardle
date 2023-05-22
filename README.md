@@ -11,3 +11,7 @@ If the player's guess word has the same letters as the secret word, those letter
 If the player's guess word has the same letters in the same position as the secret word, those letters will be shown in green. 
 
 ![Screenshot 2023-05-15 at 10 47 20](https://github.com/taksgarby/Jardle/assets/91882718/83e8fc9d-4e11-4041-9f3a-51a2f3a1246d)
+
+The secret word is  くれよん, which is "crayon" in English.
+
+
